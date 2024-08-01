@@ -22,10 +22,7 @@ class SubscriptionPlanService: SubscriptionPlanServicing {
     }
 
     func fetchPlan() -> AnyPublisher<NewspaperPlan, NetworkError> {
-        // networkClient.request(setup: SubscriptionPlanEndpoint.plan(id: "66a950f0e41b4d34e41961f8"))
-        Future<NewspaperPlan, NetworkError> { promise in
-            promise(.success(.mock))
-        }.eraseToAnyPublisher()
+        networkClient.request(setup: SubscriptionPlanEndpoint.plan(id: "66a950f0e41b4d34e41961f8"))
     }
 
     func downloadData(url: URL) -> AnyPublisher<Data, NetworkError> {
