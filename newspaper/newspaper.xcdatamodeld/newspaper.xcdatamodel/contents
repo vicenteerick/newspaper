@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MetadataEntity" representedClassName="MetadataEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="readCountRemaining" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timeToExpire" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="NewspaperData" representedClassName="NewspaperData" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <relationship name="metadata" maxCount="1" deletionRule="Cascade" destinationEntity="MetadataEntity"/>
+        <relationship name="record" maxCount="1" deletionRule="Cascade" destinationEntity="RecordData"/>
+    </entity>
+    <entity name="OfferData" representedClassName="OfferData" syncable="YES" codeGenerationType="class">
+        <attribute name="offerDescription" attributeType="String"/>
+        <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="OffersData" representedClassName="OffersData" syncable="YES" codeGenerationType="class">
+        <relationship name="id0" maxCount="1" deletionRule="Cascade" destinationEntity="OfferData"/>
+        <relationship name="id1" maxCount="1" deletionRule="Cascade" destinationEntity="OfferData"/>
+    </entity>
+    <entity name="RecordData" representedClassName="RecordData" syncable="YES" codeGenerationType="class">
+        <attribute name="headerLogo" attributeType="URI"/>
+        <relationship name="subscription" maxCount="1" deletionRule="Cascade" destinationEntity="SubscriptionData"/>
+    </entity>
+    <entity name="SubscriptionData" representedClassName="SubscriptionData" syncable="YES" codeGenerationType="class">
+        <attribute name="benefits" attributeType="Transformable"/>
+        <attribute name="coverImage" attributeType="URI"/>
+        <attribute name="disclaimer" attributeType="String"/>
+        <attribute name="offerPageStyle" attributeType="String"/>
+        <attribute name="subscribeSubtitle" attributeType="String"/>
+        <attribute name="subscribeTitle" attributeType="String"/>
+        <relationship name="offers" maxCount="1" deletionRule="Cascade" destinationEntity="OffersData"/>
+    </entity>
+</model>
